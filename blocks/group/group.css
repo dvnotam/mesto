@@ -1,0 +1,14 @@
+.group {
+    background: url('../../images/lick.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    color: black;
+    height: 18.13px;
+    width: 20.76px;
+    border: none;
+    cursor: pointer;
+}
+
+.group:hover {
+    opacity: 0.6;
+}

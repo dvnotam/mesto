@@ -1,0 +1,11 @@
+.edit-button__pane {
+    width: 10px;
+    height: 10px;
+}
+
+@media screen and (max-width: 769px) {
+    .edit-button__pane {
+        width: 7px;
+        height: 7px;
+    }
+}

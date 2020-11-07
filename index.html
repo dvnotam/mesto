@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="pages/index.css" rel="stylesheet"> 
+    <title>Mesto</title>
+</head>
+<body class = "page">
+    <header class = "header">
+    <img src="/images/logo.svg" alt="Место" class = "logo">
+    </header>
+
+    <main>
+        <div class = "profile">
+            <div class = "profile__content">
+                <img src="/images/cousteau.jpeg" alt="Кусто" class="avatar">
+                <div class = "profile-info">
+                    <div class = "profile-info__block">
+                        <h2 class = "profile-info__title">Жак-Ив Кусто</h2>
+                        <button class = "edit-button"></button> 
+                    </div>
+                    <h3 class = "profile-info__subtitle">Исследователь океана</h3>
+                </div>
+            </div>
+            <button class = "add-button"></button>
+        </div>
+
+        <div class="elements">
+            <div class="element">
+                <img src="/images/karachaevo.jpeg" alt="Карачаево" class="element__photo">
+                <div class="element__content">
+                    <h2 class="element__title">Карачаевск</h2>
+                    <button class = "group"></button>
+                </div>
+            </div>
+            <div class="element">
+                <img src="/images/elbrus.jpeg" alt="Гора Эльбрус" class="element__photo">
+                <div class="element__content">
+                    <h2 class="element__title">Гора Эльбрус</h2>
+                    <button class = "group"></button>
+                </div>
+            </div>
+            <div class="element">
+                <img src="/images/dombay.jpeg" alt="Домбай" class="element__photo">
+                <div class="element__content">
+                    <h2 class="element__title">Домбай</h2>
+                    <button class = "group"></button>
+                </div>
+            </div>
+            <div class="element">
+                <img src="/images/elbrus.jpeg" alt="Гора Эльбрус" class="element__photo">
+                <div class="element__content">
+                    <h2 class="element__title">Гора Эльбрус</h2>
+                    <button class = "group"></button>
+                </div>
+            </div>
+            <div class="element">
+                <img src="/images/dombay.jpeg" alt="Домбай" class="element__photo">
+                <div class="element__content">
+                    <h2 class="element__title">Домбай</h2>
+                    <button class = "group"></button>
+                </div>
+            </div>
+            <div class="element">
+                <img src="/images/karachaevo.jpeg" alt="Карачаево" class="element__photo">
+                <div class="element__content">
+                    <h2 class="element__title">Карачаево-Черкессия</h2>
+                    <button class = "group"></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class = "footer">
+        <h2 class="author">&copy; 2020 dima dima</h2>
+    </footer>
+
+  <div class = "popup">
+        <div class="popup__content">
+            <button type = "button" class = "popup__close"></button>
+            <h2 class="popup__title">Редактировать профиль</h2>
+            <input type="text" id = "heading" name = "heading" class = "popup__item" placeholder = "Жак-Ив Кусто">
+            <input type="text" id = "footer" name = "footer" class = "popup__item" placeholder = "Исследователь океана">
+            <h3 class = "popup__button">Сохранить</h3>
+        </div>
+    </div>
+
+    <script src = "/script/script.js"></script>
+</body>
+</html>
