@@ -1,8 +1,7 @@
 .popup__close {
     background: transparent url('../../../images/cross__close.svg') center no-repeat;
-    background-size: 35px 35px;
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
     border: none;
     position: absolute;
     top: -36px;

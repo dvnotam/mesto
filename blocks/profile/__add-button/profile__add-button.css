@@ -1,4 +1,4 @@
-.add-button {
+.profile__add-button {
     width: 150px;
     height: 50px;
     display: flex;
@@ -7,19 +7,19 @@
     border: solid 1px white;
     box-sizing: border-box;
     border-radius: 2px;
-    background: url('../../images/cross.svg');
+    background: url('../../../images/cross.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 22px;
     cursor: pointer;
 }
 
-.add-button:hover {
+.profile__add-button:hover {
     opacity: 0.6;
 }
 
 @media screen and (max-width: 769px) {
-    .add-button {
+    .profile__add-button {
         width: 282px;
         background-size: 16px;
     }

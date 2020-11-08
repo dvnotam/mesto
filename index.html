@@ -12,21 +12,19 @@
     </header>
 
     <main>
-        <div class = "profile">
+        <section class = "profile">
             <div class = "profile__content">
-                <img src="./images/cousteau.jpg" alt="Кусто" class="avatar">
-                <div class = "profile-info">
-                    <div class = "profile-info__block">
-                        <h2 class = "profile-info__title">Жак-Ив Кусто</h2>
-                        <button class = "edit-button"></button> 
-                    </div>
-                    <h3 class = "profile-info__subtitle">Исследователь океана</h3>
+                <img src="./images/cousteau.jpg" alt="Кусто" class ="profile__avatar">
+                <div class = "profile__info">
+                    <h2 class = "profile__title">Жак-Ив Кусто</h2>
+                    <p class = "profile__subtitle">Исследователь океана</p>
                 </div>
+                <button class = "profile__edit-button"></button>
             </div>
-            <button class = "add-button"></button>
-        </div>
+            <button class = "profile__add-button"></button>
+        </section>
 
-        <div class="elements">
+        <section class="elements">
             <div class="element">
                 <img src="./images/karachaevo.jpg" alt="Карачаево" class="element__photo">
                 <div class="element__content">
@@ -69,20 +67,22 @@
                     <button class = "group"></button>
                 </div>
             </div>
-        </div>
+        </section>
     </main>
 
     <footer class = "footer">
-        <h2 class="author">&copy; 2020 dima dima</h2>
+        <p class="author">&copy; 2020 dima dima</p>
     </footer>
 
-  <div class = "popup">
+    <div class = "popup">
         <div class="popup__content">
             <button type = "button" class = "popup__close"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
-            <input type="text" id = "heading" name = "heading" class = "popup__item" placeholder = "Жак-Ив Кусто">
-            <input type="text" id = "footer" name = "footer" class = "popup__item" placeholder = "Исследователь океана">
-            <h3 class = "popup__button">Сохранить</h3>
+            <form id = "form">
+                <input type="text" id = "name" name = "heading" class = "popup__item" placeholder = "Жак-Ив Кусто">
+                <input type="text" id = "job" name = "footer" class = "popup__item" placeholder = "Исследователь океана">
+                <input type = "submit" class = "popup__button" value="Сохранить">
+            </form>
         </div>
     </div>
 
