@@ -1,5 +1,5 @@
-.group {
-    background: url('../../images/lick.svg');
+.element__group {
+    background: url('../../../images/lick.svg');
     background-repeat: no-repeat;
     background-position: center;
     color: black;
@@ -9,6 +9,6 @@
     cursor: pointer;
 }
 
-.group:hover {
+.element__group:hover {
     opacity: 0.6;
 }
