@@ -3,7 +3,6 @@ let popupCloseButton = document.querySelector('.popup__close');
 let editButton = document.querySelector('.profile__edit-button');
 let formElementTitle = document.querySelector('.profile__title');
 let formElementSubtitle = document.querySelector('.profile__subtitle');
-let addButton = document.querySelector('.popup__button');
 let formElement = document.getElementById('form');
 let nameInput = document.getElementById('name');
 let jobInput = document.getElementById('job');
@@ -25,7 +24,6 @@ popupCloseButton.addEventListener('click', closePopup);
 
 function formSubmitHandler (evt) {
     evt.preventDefault();
-
 
     formElementTitle.textContent = nameInput.value;
     formElementSubtitle.textContent = jobInput.value;
