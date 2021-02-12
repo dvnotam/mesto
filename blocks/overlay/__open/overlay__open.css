@@ -1,5 +1,4 @@
-.popup__open {
+.overlay__open {
     opacity: 1;
     visibility: visible;
 }
-

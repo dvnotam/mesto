@@ -2,8 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="07f4e8df-12c3-47c1-ad7e-bba23e36c87d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/blocks/element/__group/_active/element__group_active.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blocks/element/__trash/element__trash.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blocks/group/__box/group__box.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blocks/group/__close-button/group__close-button.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blocks/group/__photo/group__photo.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blocks/group/__title/group__title.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blocks/group/group.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blocks/overlay/__open/overlay__open.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blocks/overlay/overlay.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blocks/popup/__close-button/popup__close-button.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/lick_active.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/trash_image.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/profile/__title/profile-info__title.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/profile/__title/profile__title.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/element/__group/element__group.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/element/__group/element__group.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/element/__photo/element__photo.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/element/__photo/element__photo.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/element/element.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/element/element.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/popup/__close/popup__close.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/__close/popup__close.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/popup/__open/popup__open.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/__open/popup__open.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/popup/popup.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/popup.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/script/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/script.js" afterDir="false" />
@@ -12,6 +29,13 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -25,6 +49,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -44,11 +69,54 @@
       <workItem from="1604950903795" duration="2006000" />
       <workItem from="1604996107700" duration="3159000" />
       <workItem from="1605013216269" duration="2000" />
-      <workItem from="1605017986626" duration="704000" />
+      <workItem from="1605017986626" duration="1571000" />
+      <workItem from="1605701406351" duration="48000" />
+      <workItem from="1605701472861" duration="403000" />
+      <workItem from="1607266185843" duration="9566000" />
+      <workItem from="1609081843487" duration="474000" />
+      <workItem from="1611151363040" duration="46000" />
+      <workItem from="1611151527678" duration="272000" />
+      <workItem from="1611666725135" duration="2813000" />
+      <workItem from="1611669704374" duration="8021000" />
+      <workItem from="1611744466824" duration="30528000" />
+      <workItem from="1612616830499" duration="19434000" />
+      <workItem from="1613057234815" duration="10276000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="297" y="34" key="CommitChangelistDialog2" timestamp="1612617150575">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="297" y="34" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1612617150575" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1613140300646">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1613140300646" />
+    <state x="418" y="82" width="604" height="735" key="find.popup" timestamp="1612016062240">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="418" y="82" width="604" height="735" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1612016062240" />
+    <state width="600" height="428" key="javadoc.popup" timestamp="1612454828076">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="600" height="428" key="javadoc.popup/0.0.1440.900@0.0.1440.900" timestamp="1612454828076" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1611752928771">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1611752928771" />
   </component>
 </project>

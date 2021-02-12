@@ -1,5 +1,5 @@
 .element__group {
-    background: url('../../../images/lick.svg');
+    background: url('../../../images/lick.svg') center no-repeat;
     background-repeat: no-repeat;
     background-position: center;
     color: black;

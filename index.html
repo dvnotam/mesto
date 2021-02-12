@@ -24,61 +24,18 @@
             <button class = "profile__add-button"></button>
         </section>
 
-        <section class="elements">
-            <div class="element">
-                <img src="./images/karachaevo.jpg" alt="Карачаево" class="element__photo">
-                <div class="element__content">
-                    <h2 class="element__title">Карачаевск</h2>
-                    <button class = "element__group"></button>
-                </div>
-            </div>
-            <div class="element">
-                <img src="./images/elbrus.jpg" alt="Гора Эльбрус" class="element__photo">
-                <div class="element__content">
-                    <h2 class="element__title">Гора Эльбрус</h2>
-                    <button class = "element__group"></button>
-                </div>
-            </div>
-            <div class="element">
-                <img src="./images/dombay.jpg" alt="Домбай" class="element__photo">
-                <div class="element__content">
-                    <h2 class="element__title">Домбай</h2>
-                    <button class = "element__group"></button>
-                </div>
-            </div>
-            <div class="element">
-                <img src="./images/elbrus.jpg" alt="Гора Эльбрус" class="element__photo">
-                <div class="element__content">
-                    <h2 class="element__title">Гора Эльбрус</h2>
-                    <button class = "element__group"></button>
-                </div>
-            </div>
-            <div class="element">
-                <img src="./images/dombay.jpg" alt="Домбай" class="element__photo">
-                <div class="element__content">
-                    <h2 class="element__title">Домбай</h2>
-                    <button class = "element__group"></button>
-                </div>
-            </div>
-            <div class="element">
-                <img src="./images/karachaevo.jpg" alt="Карачаево" class="element__photo">
-                <div class="element__content">
-                    <h2 class="element__title">Карачаево-Черкессия</h2>
-                    <button class = "element__group"></button>
-                </div>
-            </div>
-        </section>
+        <section class="elements"></section>
     </main>
 
     <footer class = "footer">
         <p class="footer__author">&copy; 2020 dima dima</p>
     </footer>
 
-    <div class = "popup">
+    <div class = "popup" id = "profile-form">
         <div class="popup__content">
-            <button type = "button" class = "popup__close"></button>
+            <button type = "button" id = "profile__close-btn" class = "popup__close-button"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
-            <form id = "form">
+            <form id = "profile__input-form">
                 <input type="text" id = "name" name = "heading" class = "popup__item" placeholder = "Жак-Ив Кусто">
                 <input type="text" id = "job" name = "footer" class = "popup__item" placeholder = "Исследователь океана">
                 <input type = "submit" class = "popup__button" value="Сохранить">
@@ -86,6 +43,38 @@
         </div>
     </div>
 
+    <div class = "popup" id = "photo-form">
+        <div class = "popup__content">
+            <button type = "button" id = "photo__close-btn" class = "popup__close-button"></button>
+            <h2 class = "popup__title">Новое место</h2>
+            <form id = "photo__input-form">
+                <input type = "text" id = "photo-name" name = "heading" class = "popup__item" placeholder = "Название">
+                <input type = "text" id = "photo" name = "footer" class = "popup__item" placeholder = "Ссылка на картинку">
+                <input type = "submit" class = "popup__button" value="Сохранить">
+            </form>
+        </div>
+    </div>
+
+    <div class = "overlay">
+        <div class = "group">
+            <div class = "group__box">
+            <img class = "group__photo" src="">
+            <button class = "group__close-button"></button>
+            <h2 class = "group__title"></h2>
+            </div>
+        </div>
+    </div>
+
+    <template class = "template">
+        <div class="element">
+            <button class = "element__trash"></button>
+            <img class="element__photo" src="">
+            <div class="element__content">
+                <h2 class="element__title"></h2>
+                <button class = "element__group"></button>
+            </div>
+        </div>
+    </template>
     <script src = "./script/script.js"></script>
 </body>
 </html>
