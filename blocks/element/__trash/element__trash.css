@@ -7,6 +7,7 @@
     right: 15px;
     width: 18px;
     height: 19px;
+    z-index: 1;
 }
 
 .element__trash:hover {

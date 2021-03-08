@@ -29,7 +29,7 @@ const template = document.querySelector('.template').content;
 const elements = document.querySelector('.elements');
 
 
-const renderTemplate = (elem) => {
+const createCard = (elem) => {
     const htmlElement = template.cloneNode(true);
 
     htmlElement.querySelector('.element__title').innerText = elem.name;
@@ -43,10 +43,14 @@ const renderTemplate = (elem) => {
     htmlElement.querySelector('.element__photo').addEventListener('click', (event)=>{
         openOverlay(event)});
 
-    elements.prepend(htmlElement);
+    return htmlElement;
 };
 
-initialCards.forEach(renderTemplate);
+const renderCard = (item) => {
+    elements.prepend(createCard(item))
+};
+
+initialCards.forEach(renderCard);
 
 function hendlerDelete (evt) {
     evt.target.closest('.element').remove();
@@ -68,22 +72,22 @@ const profileCloseButton = document.getElementById('profile__close-btn');
 const photoCloseButton = document.getElementById('photo__close-btn');
 const overlay = document.querySelector('.overlay');
 const overlayCloseButton = document.querySelector('.group__close-button');
+const overlayPhoto = document.querySelector('.group__photo')
+const overlayText = document.querySelector('.group__title');
 
 function overlayToggle () {
     overlay.classList.toggle('overlay__open')
-}
+};
 
 function openOverlay (event) {
-    const overlayPhoto = document.querySelector('.group__photo')
-    const overlayText = document.querySelector('.group__title');
 
     overlayPhoto.src = event.target.currentSrc
     overlayText.innerText = event.target.nextSibling.parentElement.innerText
 
-    overlayToggle();
+    openPopup(overlay);
 };
 
-overlayCloseButton.addEventListener('click', () => {overlayToggle()});
+overlayCloseButton.addEventListener('click', () => {closePopup(overlay)});
 
 formElementProfile.addEventListener('submit', (evt) => {
     evt.preventDefault();
@@ -91,35 +95,36 @@ formElementProfile.addEventListener('submit', (evt) => {
     formElementTitle.textContent = nameInput.value;
     formElementSubtitle.textContent = jobInput.value;
 
-    close(popupProfile);
+    closePopup(popupProfile);
 });
 
 formElementPhoto.addEventListener('submit', (evt) => {
     evt.preventDefault();
     const objectBox = {name:photoNameInput.value, link:photoInput.value};
 
-    renderTemplate(objectBox);
-    close(popupPhoto);
+    renderCard(objectBox);
+    closePopup(popupPhoto);
+
+    photoNameInput.value = ''
+    photoInput.value = ''
 });
 
 editButton.addEventListener('click', () => {
     nameInput.value = formElementTitle.textContent;
     jobInput.value = formElementSubtitle.textContent;
 
-    open(popupProfile);
+    openPopup(popupProfile);
 });
 
-addButton.addEventListener('click', () => {open(popupPhoto)});
+addButton.addEventListener('click', () => {openPopup(popupPhoto)});
 
-profileCloseButton.addEventListener('click', () => {close(popupProfile)});
-photoCloseButton.addEventListener('click',() => {close(popupPhoto)});
+profileCloseButton.addEventListener('click', () => {closePopup(popupProfile)});
+photoCloseButton.addEventListener('click',() => {closePopup(popupPhoto)});
 
-function close (elem) {
-    elem.classList.remove('popup__open');
-};
-
-function open (elem) {
-    elem.classList.add('popup__open');
+function closePopup (elem) {
+    elem.classList.remove('popup_open');
 }
 
-
+function openPopup (elem) {
+    elem.classList.add('popup_open');
+}
