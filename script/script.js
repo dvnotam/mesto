@@ -75,10 +75,6 @@ const overlayCloseButton = document.querySelector('.group__close-button');
 const overlayPhoto = document.querySelector('.group__photo')
 const overlayText = document.querySelector('.group__title');
 
-function overlayToggle () {
-    overlay.classList.toggle('overlay__open')
-};
-
 function openOverlay (event) {
 
     overlayPhoto.src = event.target.currentSrc
