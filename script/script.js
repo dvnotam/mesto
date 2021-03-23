@@ -72,8 +72,9 @@ const profileCloseButton = document.getElementById('profile__close-btn');
 const photoCloseButton = document.getElementById('photo__close-btn');
 const overlay = document.querySelector('.overlay');
 const overlayCloseButton = document.querySelector('.group__close-button');
-const overlayPhoto = document.querySelector('.group__photo')
+const overlayPhoto = document.querySelector('.group__photo');
 const overlayText = document.querySelector('.group__title');
+const submitButtonPhoto = document.getElementById('add-card');
 
 function openOverlay (event) {
 
@@ -112,14 +113,30 @@ editButton.addEventListener('click', () => {
     openPopup(popupProfile);
 });
 
-addButton.addEventListener('click', () => {openPopup(popupPhoto)});
+addButton.addEventListener('click', () => {
+    submitButtonPhoto.setAttribute('disabled', true);
+    submitButtonPhoto.classList.add('popup__button_disabled');
+    openPopup(popupPhoto)
+});
+
+popupProfile.addEventListener('click', () => {closePopup(popupProfile)});
+popupPhoto.addEventListener('click', () => {closePopup(popupPhoto)});
 
 profileCloseButton.addEventListener('click', () => {closePopup(popupProfile)});
 photoCloseButton.addEventListener('click',() => {closePopup(popupPhoto)});
 
+const closePopupEscBtn = (evt) => {
+  if (evt.key === 'Escape') {
+      closePopup(popupProfile);
+      closePopup(popupPhoto);
+  }
+};
+
+document.body.addEventListener('keydown', closePopupEscBtn);
+
 function closePopup (elem) {
     elem.classList.remove('popup_open');
-}
+};
 
 function openPopup (elem) {
     elem.classList.add('popup_open');
