@@ -140,7 +140,7 @@ const closeOverlayClick = () => {
     const popupList = Array.from(document.querySelectorAll('.popup'));
 
     popupList.forEach(popupElements => {
-        const overlayElements = popupElements.querySelector('.popup__overlay');
+        const overlayElements = popupElements.querySelector('.popup_overlay');
         overlayElements.addEventListener('click', (evt) => {closePopup(popupElements)});
     })
 };
