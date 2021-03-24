@@ -1,30 +1,3 @@
-const initialCards = [
-    {
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-        name: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-        name: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-        name: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-        name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-];
-
 const template = document.querySelector('.template').content;
 const elements = document.querySelector('.elements');
 
@@ -56,88 +29,120 @@ function hendlerDelete (evt) {
     evt.target.closest('.element').remove();
 };
 
+
+// попапы
+const popupProfile = document.querySelector('.popup_profile-form');
+const popupPhoto = document.querySelector('.popup_photo-form');
+
+// формы попапа
+const formElementProfile = document.querySelector('.popup__form_profile');
+const formElementPhoto = document.querySelector('.popup__form_photo');
+
+//кнопки вызова попапов
 const editButton = document.querySelector('.profile__edit-button');
 const addButton = document.querySelector('.profile__add-button');
+
+//имя и профессия
 const formElementTitle = document.querySelector('.profile__title');
 const formElementSubtitle = document.querySelector('.profile__subtitle');
-const popupProfile = document.getElementById('profile-form');
-const popupPhoto = document.getElementById('photo-form');
-const formElementProfile = document.getElementById('profile__input-form');
-const formElementPhoto = document.getElementById('photo__input-form');
-const nameInput = document.getElementById('name');
-const jobInput = document.getElementById('job');
-const photoNameInput = document.getElementById('photo-name');
-const photoInput = document.getElementById('photo');
-const profileCloseButton = document.getElementById('profile__close-btn');
-const photoCloseButton = document.getElementById('photo__close-btn');
+
+// инпуты
+const nameInput = document.querySelector('.popup__item_profile-name');
+const jobInput = document.querySelector('.popup__item_profile-job');
+const photoNameInput = document.querySelector('.popup__item_photo-name');
+const photoInput = document.querySelector('.popup__item_photo');
+
+//закрывающие кнопки
+const profileCloseButton = document.querySelector('.popup__close-button_profile');
+const photoCloseButton = document.querySelector('.popup__close-button_photo');
+
+// сохранение формы фото
+const submitButtonPhoto = document.querySelector('.popup__button_photo');;
+
+//оверлэй
 const overlay = document.querySelector('.overlay');
 const overlayCloseButton = document.querySelector('.group__close-button');
 const overlayPhoto = document.querySelector('.group__photo');
 const overlayText = document.querySelector('.group__title');
-const submitButtonPhoto = document.getElementById('add-card');
 
-function openOverlay (event) {
+const showPopupProfile = () => {
+    nameInput.value = formElementTitle.textContent;
+    jobInput.value = formElementSubtitle.textContent;
 
-    overlayPhoto.src = event.target.currentSrc
-    overlayText.innerText = event.target.nextSibling.parentElement.innerText
+    openPopup(popupProfile);
+};
+
+const saveProfileForm = (evt) => {
+    evt.preventDefault();
+
+    formElementTitle.textContent = nameInput.value;
+    formElementSubtitle.textContent = jobInput.value;
+
+    closePopup(popupProfile)
+};
+
+editButton.addEventListener('click', () => {showPopupProfile()});
+formElementProfile.addEventListener('submit', (evt) => {saveProfileForm(evt)});
+profileCloseButton.addEventListener('click', () => {closePopup(popupProfile)});
+
+const openPhotoPopup = (photo, subm) => {
+    subm.setAttribute('disabled', true);
+    subm.classList.add('popup__button_disabled');
+    openPopup(photo)
+}
+
+const addPhotoCard = (evt) => {
+    evt.preventDefault();
+
+    const objectBox = {name:photoNameInput.value, link:photoInput.value};
+
+    renderCard(objectBox);
+
+    closePopup(popupPhoto);
+
+    photoNameInput.value = ''
+    photoInput.value = ''
+};
+
+addButton.addEventListener('click', () => {openPhotoPopup(popupPhoto, submitButtonPhoto)});
+formElementPhoto.addEventListener('submit', addPhotoCard);
+photoCloseButton.addEventListener('click', () => {closePopup(popupPhoto)});
+
+const openOverlay = (evt) => {
+
+    overlayPhoto.src = evt.target.currentSrc
+    overlayText.innerText = evt.target.nextSibling.parentElement.innerText
 
     openPopup(overlay);
 };
 
 overlayCloseButton.addEventListener('click', () => {closePopup(overlay)});
 
-formElementProfile.addEventListener('submit', (evt) => {
-    evt.preventDefault();
-
-    formElementTitle.textContent = nameInput.value;
-    formElementSubtitle.textContent = jobInput.value;
-
-    closePopup(popupProfile);
-});
-
-formElementPhoto.addEventListener('submit', (evt) => {
-    evt.preventDefault();
-    const objectBox = {name:photoNameInput.value, link:photoInput.value};
-
-    renderCard(objectBox);
-    closePopup(popupPhoto);
-
-    photoNameInput.value = ''
-    photoInput.value = ''
-});
-
-editButton.addEventListener('click', () => {
-    nameInput.value = formElementTitle.textContent;
-    jobInput.value = formElementSubtitle.textContent;
-
-    openPopup(popupProfile);
-});
-
-addButton.addEventListener('click', () => {
-    submitButtonPhoto.setAttribute('disabled', true);
-    submitButtonPhoto.classList.add('popup__button_disabled');
-    openPopup(popupPhoto)
-});
-
-popupProfile.addEventListener('click', () => {closePopup(popupProfile)});
-popupPhoto.addEventListener('click', () => {closePopup(popupPhoto)});
-
-profileCloseButton.addEventListener('click', () => {closePopup(popupProfile)});
-photoCloseButton.addEventListener('click',() => {closePopup(popupPhoto)});
-
-const closePopupEscBtn = (evt) => {
-  if (evt.key === 'Escape') {
-      closePopup(popupProfile);
-      closePopup(popupPhoto);
-  }
+const openPopup = (elem) => {
+    elem.classList.add('popup_open')
 };
 
-document.body.addEventListener('keydown', closePopupEscBtn);
-
-function closePopup (elem) {
-    elem.classList.remove('popup_open');
+const closePopup = (elem) => {
+    elem.classList.remove('popup_open')
 };
 
-function openPopup (elem) {
-    elem.classList.add('popup_open');
-}
+const overlayCloseEsc = (evt) => {
+    if (evt.key === 'Escape') {
+        closePopup(popupProfile);
+        closePopup(popupPhoto);
+        closePopup(overlay);
+    }
+};
+
+document.body.addEventListener('keydown', overlayCloseEsc);
+
+const closeOverlayClick = () => {
+    const popupList = Array.from(document.querySelectorAll('.popup'));
+
+    popupList.forEach(popupElements => {
+        const overlayElements = popupElements.querySelector('.popup__overlay');
+        overlayElements.addEventListener('click', (evt) => {closePopup(popupElements)});
+    })
+};
+
+closeOverlayClick();
