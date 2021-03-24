@@ -29,38 +29,29 @@ function hendlerDelete (evt) {
     evt.target.closest('.element').remove();
 };
 
-
-// попапы
 const popupProfile = document.querySelector('.popup_profile-form');
 const popupPhoto = document.querySelector('.popup_photo-form');
 
-// формы попапа
 const formElementProfile = document.querySelector('.popup__form_profile');
 const formElementPhoto = document.querySelector('.popup__form_photo');
 
-//кнопки вызова попапов
 const editButton = document.querySelector('.profile__edit-button');
 const addButton = document.querySelector('.profile__add-button');
 
-//имя и профессия
 const formElementTitle = document.querySelector('.profile__title');
 const formElementSubtitle = document.querySelector('.profile__subtitle');
 
-// инпуты
 const nameInput = document.querySelector('.popup__item_profile-name');
 const jobInput = document.querySelector('.popup__item_profile-job');
 const photoNameInput = document.querySelector('.popup__item_photo-name');
 const photoInput = document.querySelector('.popup__item_photo');
 
-//закрывающие кнопки
 const profileCloseButton = document.querySelector('.popup__close-button_profile');
 const photoCloseButton = document.querySelector('.popup__close-button_photo');
 
-// сохранение формы фото
 const submitButtonPhoto = document.querySelector('.popup__button_photo');;
 
-//оверлэй
-const overlay = document.querySelector('.overlay');
+const overlay = document.querySelector('.popup_overlay-window');
 const overlayCloseButton = document.querySelector('.group__close-button');
 const overlayPhoto = document.querySelector('.group__photo');
 const overlayText = document.querySelector('.group__title');
@@ -140,7 +131,7 @@ const closeOverlayClick = () => {
     const popupList = Array.from(document.querySelectorAll('.popup'));
 
     popupList.forEach(popupElements => {
-        const overlayElements = popupElements.querySelector('.popup_overlay');
+        const overlayElements = popupElements.querySelector('.popup__overlay');
         overlayElements.addEventListener('click', (evt) => {closePopup(popupElements)});
     })
 };

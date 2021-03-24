@@ -36,7 +36,7 @@
 @import url('../blocks/popup/_open/popup_open.css');
 @import url('../blocks/popup/__close-button/popup__close-button.css');
 @import url('../blocks/popup/__close/popup__close.css');
-@import url('../blocks/popup/_overlay/popup_overlay.css');
+@import url('../blocks/popup/__overlay/popup__overlay.css');
 
 @import url('../blocks/popup/__error/popup__error.css');
 @import url('../blocks/popup/__error/_visible/popup__error_visible.css');
