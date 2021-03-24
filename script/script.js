@@ -7,6 +7,7 @@ const createCard = (elem) => {
 
     htmlElement.querySelector('.element__title').innerText = elem.name;
     htmlElement.querySelector('.element__photo').src = elem.link;
+    htmlElement.querySelector('.element__photo').alt = elem.alt;
 
     htmlElement.querySelector('.element__trash').addEventListener('click', hendlerDelete);
     htmlElement.querySelector('.element__group').addEventListener('click', (evt) => {
@@ -14,7 +15,7 @@ const createCard = (elem) => {
     });
 
     htmlElement.querySelector('.element__photo').addEventListener('click', (event)=>{
-        openOverlay(event)});
+        openOverlay(elem)});
 
     return htmlElement;
 };
@@ -46,13 +47,9 @@ const jobInput = document.querySelector('.popup__item_profile-job');
 const photoNameInput = document.querySelector('.popup__item_photo-name');
 const photoInput = document.querySelector('.popup__item_photo');
 
-const profileCloseButton = document.querySelector('.popup__close-button_profile');
-const photoCloseButton = document.querySelector('.popup__close-button_photo');
-
 const submitButtonPhoto = document.querySelector('.popup__button_photo');;
 
 const overlay = document.querySelector('.popup_overlay-window');
-const overlayCloseButton = document.querySelector('.group__close-button');
 const overlayPhoto = document.querySelector('.group__photo');
 const overlayText = document.querySelector('.group__title');
 
@@ -74,7 +71,6 @@ const saveProfileForm = (evt) => {
 
 editButton.addEventListener('click', () => {showPopupProfile()});
 formElementProfile.addEventListener('submit', (evt) => {saveProfileForm(evt)});
-profileCloseButton.addEventListener('click', () => {closePopup(popupProfile)});
 
 const openPhotoPopup = (photo, subm) => {
     subm.setAttribute('disabled', true);
@@ -97,42 +93,45 @@ const addPhotoCard = (evt) => {
 
 addButton.addEventListener('click', () => {openPhotoPopup(popupPhoto, submitButtonPhoto)});
 formElementPhoto.addEventListener('submit', addPhotoCard);
-photoCloseButton.addEventListener('click', () => {closePopup(popupPhoto)});
 
-const openOverlay = (evt) => {
+const openOverlay = (elem) => {
 
-    overlayPhoto.src = evt.target.currentSrc
-    overlayText.innerText = evt.target.nextSibling.parentElement.innerText
+    overlayPhoto.src = elem.link
+    overlayPhoto.alt = elem.alt
+    overlayText.innerText = elem.name
 
     openPopup(overlay);
 };
 
-overlayCloseButton.addEventListener('click', () => {closePopup(overlay)});
+ const openPopup = (popup) => {
+    popup.classList.add('popup_open');
+    document.addEventListener('keydown', closeByEscape);
+}
 
-const openPopup = (elem) => {
-    elem.classList.add('popup_open')
-};
+const closePopup = (popup) => {
+    popup.classList.remove('popup_open');
+    document.removeEventListener('keydown', closeByEscape);
+}
 
-const closePopup = (elem) => {
-    elem.classList.remove('popup_open')
-};
-
-const overlayCloseEsc = (evt) => {
+const closeByEscape = (evt) => {
     if (evt.key === 'Escape') {
-        closePopup(popupProfile);
-        closePopup(popupPhoto);
-        closePopup(overlay);
+        const openedPopup = document.querySelector('.popup_open')
+        closePopup(openedPopup);
     }
 };
 
-document.body.addEventListener('keydown', overlayCloseEsc);
-
 const closeOverlayClick = () => {
-    const popupList = Array.from(document.querySelectorAll('.popup'));
+    const popups = document.querySelectorAll('.popup')
 
-    popupList.forEach(popupElements => {
-        const overlayElements = popupElements.querySelector('.popup__overlay');
-        overlayElements.addEventListener('click', (evt) => {closePopup(popupElements)});
+    popups.forEach((popup) => {
+        popup.addEventListener('click', (evt) => {
+            if (evt.target.classList.contains('popup_open')) {
+                closePopup(popup)
+            }
+            if (evt.target.classList.contains('popup__close-button')) {
+                closePopup(popup)
+            }
+        })
     })
 };
 
