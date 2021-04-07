@@ -1,34 +1,12 @@
-const template = document.querySelector('.template').content;
-const elements = document.querySelector('.elements');
+import {initialCards} from "./initial-cards.js";
+import {Card} from './Card.js'
 
+export const popupElement = document.querySelector('.popup_overlay-window')
+export const popupImage = document.querySelector('.group__photo')
+export const closeButton = document.querySelector('.popup__close-button')
+export const popupText = document.querySelector('.group__title');
 
-const createCard = (elem) => {
-    const htmlElement = template.cloneNode(true);
-
-    htmlElement.querySelector('.element__title').innerText = elem.name;
-    htmlElement.querySelector('.element__photo').src = elem.link;
-    htmlElement.querySelector('.element__photo').alt = elem.alt;
-
-    htmlElement.querySelector('.element__trash').addEventListener('click', hendlerDelete);
-    htmlElement.querySelector('.element__group').addEventListener('click', (evt) => {
-        evt.target.classList.toggle('element__group_active');
-    });
-
-    htmlElement.querySelector('.element__photo').addEventListener('click', (event)=>{
-        openOverlay(elem)});
-
-    return htmlElement;
-};
-
-const renderCard = (item) => {
-    elements.prepend(createCard(item))
-};
-
-initialCards.forEach(renderCard);
-
-function hendlerDelete (evt) {
-    evt.target.closest('.element').remove();
-};
+export const someFormElement = document.querySelectorAll('.popup__form');
 
 const popupProfile = document.querySelector('.popup_profile-form');
 const popupPhoto = document.querySelector('.popup_photo-form');
@@ -47,11 +25,16 @@ const jobInput = document.querySelector('.popup__item_profile-job');
 const photoNameInput = document.querySelector('.popup__item_photo-name');
 const photoInput = document.querySelector('.popup__item_photo');
 
-const submitButtonPhoto = document.querySelector('.popup__button_photo');;
+const submitButtonPhoto = document.querySelector('.popup__button_photo');
 
-const overlay = document.querySelector('.popup_overlay-window');
-const overlayPhoto = document.querySelector('.group__photo');
-const overlayText = document.querySelector('.group__title');
+const renderCard = (item) => {
+    const card = new Card(item);
+    const cardElement = card.generateCard();
+
+    document.querySelector('.elements').prepend(cardElement);
+}
+
+initialCards.forEach(renderCard);
 
 const showPopupProfile = () => {
     nameInput.value = formElementTitle.textContent;
@@ -94,21 +77,12 @@ const addPhotoCard = (evt) => {
 addButton.addEventListener('click', () => {openPhotoPopup(popupPhoto, submitButtonPhoto)});
 formElementPhoto.addEventListener('submit', addPhotoCard);
 
-const openOverlay = (elem) => {
-
-    overlayPhoto.src = elem.link
-    overlayPhoto.alt = elem.alt
-    overlayText.innerText = elem.name
-
-    openPopup(overlay);
-};
-
- const openPopup = (popup) => {
+ export const openPopup = (popup) => {
     popup.classList.add('popup_open');
     document.addEventListener('keydown', closeByEscape);
 }
 
-const closePopup = (popup) => {
+export const closePopup = (popup) => {
     popup.classList.remove('popup_open');
     document.removeEventListener('keydown', closeByEscape);
 }
