@@ -1,12 +1,10 @@
-import {someFormElement} from './script.js';
-
-class FormValidator {
-    constructor (enableObject, formElement) {
-        this._inputSelector = enableObject.inputSelector;
-        this._submitButtonSelector = enableObject.submitButtonSelector;
-        this._inactiveButtonClass = enableObject.inactiveButtonClass;
-        this._inputErrorClass = enableObject.inputErrorClass;
-        this._errorClass = enableObject.errorClass;
+export class FormValidator {
+    constructor (validationConfig, formElement) {
+        this._inputSelector = validationConfig.inputSelector;
+        this._submitButtonSelector = validationConfig.submitButtonSelector;
+        this._inactiveButtonClass = validationConfig.inactiveButtonClass;
+        this._inputErrorClass = validationConfig.inputErrorClass;
+        this._errorClass = validationConfig.errorClass;
         this._formElement = formElement;
     }
 
@@ -68,14 +66,3 @@ class FormValidator {
         this._setInputListeners()
     }
 }
-
-someFormElement.forEach((formElement) => {
-    const someFormValidator = new FormValidator({
-        inputSelector: '.popup__item',
-        submitButtonSelector: '.popup__button',
-        inactiveButtonClass: 'popup__button_disabled',
-        inputErrorClass: 'popup__input_type_error',
-        errorClass: 'popup__error_visible'
-    }, formElement)
-    someFormValidator.enableValidation()
-})

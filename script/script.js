@@ -1,12 +1,7 @@
-import {initialCards} from "./initial-cards.js";
-import {Card} from './Card.js'
-
-export const popupElement = document.querySelector('.popup_overlay-window')
-export const popupImage = document.querySelector('.group__photo')
-export const closeButton = document.querySelector('.popup__close-button')
-export const popupText = document.querySelector('.group__title');
-
-export const someFormElement = document.querySelectorAll('.popup__form');
+import {FormValidator} from "./FormValidation.js"
+import {initialCards} from "./initial-cards.js"
+import {Card} from "./Card.js"
+import {closePopup, openPopup} from "../utils/utils.js"
 
 const popupProfile = document.querySelector('.popup_profile-form');
 const popupPhoto = document.querySelector('.popup_photo-form');
@@ -27,14 +22,21 @@ const photoInput = document.querySelector('.popup__item_photo');
 
 const submitButtonPhoto = document.querySelector('.popup__button_photo');
 
-const renderCard = (item) => {
-    const card = new Card(item);
+const createCard = (item) => {
+    const card = new Card(item, '.template_card');
     const cardElement = card.generateCard();
+    
+    return cardElement;
+}
 
+const prependCard = (cardElement) => {
     document.querySelector('.elements').prepend(cardElement);
 }
 
-initialCards.forEach(renderCard);
+initialCards.forEach((initialCard) => {
+    const newCard = createCard(initialCard)
+    prependCard(newCard)
+});
 
 const showPopupProfile = () => {
     nameInput.value = formElementTitle.textContent;
@@ -64,9 +66,10 @@ const openPhotoPopup = (photo, subm) => {
 const addPhotoCard = (evt) => {
     evt.preventDefault();
 
-    const objectBox = {name:photoNameInput.value, link:photoInput.value};
+    const card = {name:photoNameInput.value, link:photoInput.value};
 
-    renderCard(objectBox);
+    const newCard = createCard(card)
+    prependCard(newCard)
 
     closePopup(popupPhoto);
 
@@ -77,22 +80,11 @@ const addPhotoCard = (evt) => {
 addButton.addEventListener('click', () => {openPhotoPopup(popupPhoto, submitButtonPhoto)});
 formElementPhoto.addEventListener('submit', addPhotoCard);
 
- export const openPopup = (popup) => {
-    popup.classList.add('popup_open');
-    document.addEventListener('keydown', closeByEscape);
-}
-
-export const closePopup = (popup) => {
-    popup.classList.remove('popup_open');
-    document.removeEventListener('keydown', closeByEscape);
-}
-
-const closeByEscape = (evt) => {
-    if (evt.key === 'Escape') {
-        const openedPopup = document.querySelector('.popup_open')
-        closePopup(openedPopup);
-    }
-};
+const closeButton = document.querySelector('.group__close-button');
+const overlay = document.querySelector('.popup_overlay-window');
+closeButton.addEventListener('click', () => {
+    closePopup(overlay);
+})
 
 const closeOverlayClick = () => {
     const popups = document.querySelectorAll('.popup')
@@ -110,3 +102,23 @@ const closeOverlayClick = () => {
 };
 
 closeOverlayClick();
+
+const popupFormProfile = document.querySelector('.popup__form_profile')
+const popupProfileValidation = new FormValidator({
+    inputSelector: '.popup__item',
+    submitButtonSelector: '.popup__button',
+    inactiveButtonClass: 'popup__button_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__error_visible'
+}, popupFormProfile)
+popupProfileValidation.enableValidation()
+
+const popupFormPhoto = document.querySelector('.popup__form_photo')
+const popupPhotoValidation = new FormValidator({
+    inputSelector: '.popup__item',
+    submitButtonSelector: '.popup__button',
+    inactiveButtonClass: 'popup__button_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__error_visible'
+}, popupFormPhoto)
+popupPhotoValidation.enableValidation()
