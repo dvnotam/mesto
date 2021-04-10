@@ -1,3 +1,6 @@
+//Простите, я пытался разобраться сам, но так и не понял как пофиксить ошибку валижации при закрытии попапа профиля.
+//Если вас не затруднит, обьясните с чем это может быть связанно. Заранее спасибо.
+
 import {FormValidator} from "./FormValidation.js"
 import {initialCards} from "./initial-cards.js"
 import {Card} from "./Card.js"
@@ -14,6 +17,7 @@ const addButton = document.querySelector('.profile__add-button');
 
 const formElementTitle = document.querySelector('.profile__title');
 const formElementSubtitle = document.querySelector('.profile__subtitle');
+
 
 const nameInput = document.querySelector('.popup__item_profile-name');
 const jobInput = document.querySelector('.popup__item_profile-job');
@@ -58,6 +62,9 @@ editButton.addEventListener('click', () => {showPopupProfile()});
 formElementProfile.addEventListener('submit', (evt) => {saveProfileForm(evt)});
 
 const openPhotoPopup = (photo, subm) => {
+    photoNameInput.value = '';
+    photoInput.value = '';
+
     subm.setAttribute('disabled', true);
     subm.classList.add('popup__button_disabled');
     openPopup(photo)
