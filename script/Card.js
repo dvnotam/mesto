@@ -20,6 +20,11 @@ export class Card {
         openPopup(popupElement)
     }
 
+    _photoElement () {
+        this._element.querySelector('.element__photo').src = this._link;
+        this._element.querySelector('.element__photo').alt = this._name;
+    }
+
     _deleteCard () {
         this._element.querySelector('.element__trash').addEventListener('click', (evt) => {
             this._removeCard(evt)
@@ -50,11 +55,10 @@ export class Card {
         this._element = this._getTemplate()
         this._setEventListener()
         this._deleteCard()
-        this._clickPhoto ()
+        this._clickPhoto()
+        this._photoElement()
 
         this._element.querySelector('.element__title').innerText = this._name;
-        this._element.querySelector('.element__photo').src = this._link;
-        this._element.querySelector('.element__photo').alt = this._name;
 
         return this._element;
     }

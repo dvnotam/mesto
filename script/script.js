@@ -1,6 +1,3 @@
-//Простите, я пытался разобраться сам, но так и не понял как пофиксить ошибку валижации при закрытии попапа профиля.
-//Если вас не затруднит, обьясните с чем это может быть связанно. Заранее спасибо.
-
 import {FormValidator} from "./FormValidation.js"
 import {initialCards} from "./initial-cards.js"
 import {Card} from "./Card.js"
@@ -58,7 +55,10 @@ const saveProfileForm = (evt) => {
     closePopup(popupProfile)
 };
 
-editButton.addEventListener('click', () => {showPopupProfile()});
+editButton.addEventListener('click', () => {
+    popupProfileValidation.clearValidationErrors()
+    showPopupProfile()
+});
 formElementProfile.addEventListener('submit', (evt) => {saveProfileForm(evt)});
 
 const openPhotoPopup = (photo, subm) => {
@@ -84,7 +84,10 @@ const addPhotoCard = (evt) => {
     photoInput.value = ''
 };
 
-addButton.addEventListener('click', () => {openPhotoPopup(popupPhoto, submitButtonPhoto)});
+addButton.addEventListener('click', () => {
+    openPhotoPopup(popupPhoto, submitButtonPhoto)
+});
+
 formElementPhoto.addEventListener('submit', addPhotoCard);
 
 const closeButton = document.querySelector('.group__close-button');
@@ -110,22 +113,18 @@ const closeOverlayClick = () => {
 
 closeOverlayClick();
 
-const popupFormProfile = document.querySelector('.popup__form_profile')
-const popupProfileValidation = new FormValidator({
+const validationConfig = {
     inputSelector: '.popup__item',
     submitButtonSelector: '.popup__button',
     inactiveButtonClass: 'popup__button_disabled',
     inputErrorClass: 'popup__input_type_error',
     errorClass: 'popup__error_visible'
-}, popupFormProfile)
+}
+
+const popupFormProfile = document.querySelector('.popup__form_profile')
+const popupProfileValidation = new FormValidator(validationConfig, popupFormProfile)
 popupProfileValidation.enableValidation()
 
 const popupFormPhoto = document.querySelector('.popup__form_photo')
-const popupPhotoValidation = new FormValidator({
-    inputSelector: '.popup__item',
-    submitButtonSelector: '.popup__button',
-    inactiveButtonClass: 'popup__button_disabled',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__error_visible'
-}, popupFormPhoto)
+const popupPhotoValidation = new FormValidator(validationConfig, popupFormPhoto)
 popupPhotoValidation.enableValidation()
