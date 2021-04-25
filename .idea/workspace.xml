@@ -2,10 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="07f4e8df-12c3-47c1-ad7e-bba23e36c87d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/pages/script.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/Card.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/Card.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/FormValidation.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/FormValidation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/fonts.css" beforeDir="false" afterPath="$PROJECT_DIR$/fonts/fonts.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/Card.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Card.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/FormValidation.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/FormValidation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/initial-cards.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/initial-cards.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/constants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/utils.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,11 +43,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/blocks/popup/__input-error" />
-      <recent name="$PROJECT_DIR$/blocks/popup" />
-      <recent name="$PROJECT_DIR$/blocks" />
-      <recent name="$PROJECT_DIR$/blocks/popup/__input" />
-      <recent name="$PROJECT_DIR$/blocks/footer" />
+      <recent name="$PROJECT_DIR$/fonts" />
+      <recent name="$PROJECT_DIR$/vendor" />
+      <recent name="$PROJECT_DIR$/utils" />
+      <recent name="$PROJECT_DIR$/pages" />
+      <recent name="$PROJECT_DIR$/components" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -82,7 +88,11 @@
       <workItem from="1617369229114" duration="129000" />
       <workItem from="1617546022277" duration="112000" />
       <workItem from="1617628481300" duration="30239000" />
-      <workItem from="1617881722978" duration="19693000" />
+      <workItem from="1617881722978" duration="19869000" />
+      <workItem from="1618306303210" duration="447000" />
+      <workItem from="1618480659327" duration="100000" />
+      <workItem from="1618663456651" duration="63221000" />
+      <workItem from="1619386627265" duration="862000" />
     </task>
     <servers />
   </component>
@@ -112,17 +122,18 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="418" y="82" width="604" height="735" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1612016062240" />
-    <state width="600" height="428" key="javadoc.popup" timestamp="1612454828076">
+    <state width="600" height="428" key="javadoc.popup" timestamp="1618672810895">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="600" height="428" key="javadoc.popup/0.0.1440.900@0.0.1440.900" timestamp="1612454828076" />
+    <state width="600" height="428" key="javadoc.popup/0.0.1440.900@0.0.1440.900" timestamp="1618672810895" />
     <state x="385" y="210" key="run.anything.popup" timestamp="1617630552676">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="385" y="210" key="run.anything.popup/0.0.1440.900@0.0.1440.900" timestamp="1617630552676" />
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1611752928771">
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1618675880642">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1611752928771" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1618675880642" />
+    <state x="385" y="200" width="670" height="611" key="search.everywhere.popup/0.23.1440.813@0.23.1440.813" timestamp="1618480752927" />
   </component>
 </project>

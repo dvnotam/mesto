@@ -1,25 +1,16 @@
-import {popupElement, popupImage, closeButton, popupText} from '../utils/constants.js';
-import {closePopup, openPopup} from "../utils/utils.js";
-
-export class Card {
-    constructor(data, cardSelector) {
+export default class Card {
+    constructor(data, cardSelector, handleCardClick) {
         this._name = data.name;
         this._link = data.link;
         this._cardSelector = cardSelector;
+        this._handleCardClick = handleCardClick
     }
 
     _getTemplate () {
         const cardElement = document.querySelector(this._cardSelector).content.querySelector('.element').cloneNode(true);
         return cardElement;
     }
-
-    _handleOpenPopup () {
-        popupImage.src = this._link
-        popupText.textContent = this._name
-        popupImage.alt = this._name
-        openPopup(popupElement)
-    }
-
+    
     _photoElement () {
         this._element.querySelector('.element__photo').src = this._link;
         this._element.querySelector('.element__photo').alt = this._name;
@@ -33,7 +24,7 @@ export class Card {
 
     _clickPhoto () {
         this._element.querySelector('.element__photo').addEventListener('click', () => {
-        this._handleOpenPopup();
+        this._handleCardClick()
     })
     }
 
