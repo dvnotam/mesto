@@ -19,6 +19,7 @@
   "homepage": "https://github.com/dvnotam/mesto#readme",
   "dependencies": {
     "core-js": "^3.11.0",
+    "file-loader": "^6.2.0",
     "webpack": "^5.35.1",
     "webpack-cli": "^4.6.0"
   },

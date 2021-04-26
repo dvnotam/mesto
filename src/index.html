@@ -7,13 +7,13 @@
 </head>
 <body class = "page">
     <header class = "header">
-    <img src="./images/logo.svg" alt="Место" class = "logo">
+    <img src="<%=require('./images/logo.svg')%>" alt="Место" class = "logo">
     </header>
 
     <main>
         <section class = "profile">
             <div class = "profile__content">
-                <img src="./images/cousteau.jpg" alt="Кусто" class ="profile__avatar">
+                <img src="<%=require('./images/cousteau.jpg')%>" alt="Кусто" class ="profile__avatar">
                 <div class = "profile__info">
                     <h2 class = "profile__title">Жак-Ив Кусто</h2>
                     <p class = "profile__subtitle">Исследователь океана</p>
@@ -78,10 +78,5 @@
             </div>
         </div>
     </template>
-    <script type = "module" src = "./utils/constants.js"></script>
-    <script type = "module" src = "utils/initial-cards.js"></script>
-    <script type = "module" src = "components/FormValidation.js"></script>
-    <script type = "module" src = "components/Card.js"></script>
-    <script type = "module" src = "pages/script.js"></script>
 </body>
 </html>
