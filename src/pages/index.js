@@ -4,11 +4,10 @@ import {initialCards} from "../utils/initial-cards.js"
 import FormValidator from "../components/FormValidation.js"
 import Card from "../components/Card.js"
 import Section from '../components/Section.js'
-import Popup from '../components/Popup.js'
 import UserInfo from "../components/UserInfo.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
-import { popupProfile, popupPhoto, popupOverlayWindow, cardBox, editButton, addButton, formElementTitle, formElementSubtitle, nameInput, jobInput, photoNameInput, photoInput } from '../utils/constants.js'
+import { templateCard, popupProfile, popupPhoto, popupOverlayWindow, cardBox, editButton, addButton, formElementTitle, formElementSubtitle, nameInput, jobInput, photoNameInput, photoInput } from '../utils/constants.js'
 
 const userInfo = new UserInfo({
     userName: formElementTitle,
@@ -28,8 +27,7 @@ editButton.addEventListener('click', () => {
 
     popupProfileValidation.clearValidationErrors()
 
-    const popup = new Popup(popupProfile);
-    popup.open();
+    profileForm.open();
 })
 
 addButton.addEventListener('click', () => {
@@ -39,31 +37,28 @@ addButton.addEventListener('click', () => {
     popupPhotoValidation.clearValidationErrors()
     popupPhotoValidation.disableSubmitButton()
 
-    const popup = new Popup(popupPhoto);
-    popup.open();
+    newCard.open();
 })
 
-const cardSections = new Section({
-    item: initialCards,
-    renderer: (item) => {
-        const card = new Card(item, '.template_card', () => {
-            const popupOverlay = new PopupWithImage(popupOverlayWindow)
-            popupOverlay.open(item.name, item.link)
-        })
-        const cardElement = card.generateCard()
-        cardSections.addItem(cardElement)
-    }
-}, cardBox)
-cardSections.rendererItem()
-
-const newCard = new PopupWithForm(popupPhoto, (item) => {
-    const card = new Card(item, '.template_card', () => {
-        const popupOverlay = new PopupWithImage()
+function createCard(item) {
+    const card = new Card(item, templateCard, () => {
+        const popupOverlay = new PopupWithImage(popupOverlayWindow)
         popupOverlay.open(item.name, item.link)
     })
     const cardElement = card.generateCard()
     cardSections.addItem(cardElement)
+}
 
+const cardSections = new Section({
+    item: initialCards,
+    renderer: (item) => {
+        createCard(item)
+    }
+}, cardBox)
+cardSections.renderItems()
+
+const newCard = new PopupWithForm(popupPhoto, (item) => {
+    createCard(item)
     newCard.close()
 })
 

@@ -2,6 +2,7 @@ export const popupProfile = '.popup_profile-form';
 export const popupPhoto = '.popup_photo-form';
 export const popupOverlayWindow = '.popup_overlay-window'
 export const cardBox = '.elements'
+export const templateCard = '.template_card'
 
 export const editButton = document.querySelector('.profile__edit-button');
 export const addButton = document.querySelector('.profile__add-button');

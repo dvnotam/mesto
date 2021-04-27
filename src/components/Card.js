@@ -11,9 +11,11 @@ export default class Card {
         return cardElement;
     }
     
-    _photoElement () {
-        this._element.querySelector('.element__photo').src = this._link;
-        this._element.querySelector('.element__photo').alt = this._name;
+    _addPhotoElement () {
+        const photoElement = this._element.querySelector('.element__photo')
+
+        photoElement.src = this._link;
+        photoElement.alt = this._name;
     }
 
     _deleteCard () {
@@ -47,7 +49,7 @@ export default class Card {
         this._setEventListener()
         this._deleteCard()
         this._clickPhoto()
-        this._photoElement()
+        this._addPhotoElement()
 
         this._element.querySelector('.element__title').innerText = this._name;
 
