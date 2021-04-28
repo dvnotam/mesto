@@ -3,9 +3,6 @@ export default class Popup {
         this._popupSelector = popupSelector
         this._popupElement = document.querySelector(popupSelector)
         this._handlerEscClose = this._handlerEscClose.bind(this)
-
-        this.setEventListeners()
-
     }
 
     _handlerEscClose (evt) {

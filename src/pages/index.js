@@ -27,6 +27,7 @@ editButton.addEventListener('click', () => {
 
     popupProfileValidation.clearValidationErrors()
 
+    profileForm.setEventListeners()
     profileForm.open();
 })
 
@@ -37,28 +38,31 @@ addButton.addEventListener('click', () => {
     popupPhotoValidation.clearValidationErrors()
     popupPhotoValidation.disableSubmitButton()
 
+    newCard.setEventListeners()
     newCard.open();
 })
 
-function createCard(item) {
+const popupOverlay = new PopupWithImage(popupOverlayWindow)
+
+const createCard = (item) => {
     const card = new Card(item, templateCard, () => {
-        const popupOverlay = new PopupWithImage(popupOverlayWindow)
         popupOverlay.open(item.name, item.link)
+        popupOverlay.setEventListeners()
     })
     const cardElement = card.generateCard()
-    cardSections.addItem(cardElement)
+    return cardElement
 }
 
 const cardSections = new Section({
     item: initialCards,
     renderer: (item) => {
-        createCard(item)
+        cardSections.addItem(createCard(item))
     }
 }, cardBox)
 cardSections.renderItems()
 
 const newCard = new PopupWithForm(popupPhoto, (item) => {
-    createCard(item)
+    cardSections.addItem(createCard(item))
     newCard.close()
 })
 
