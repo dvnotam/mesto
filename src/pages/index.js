@@ -27,7 +27,6 @@ editButton.addEventListener('click', () => {
 
     popupProfileValidation.clearValidationErrors()
 
-    profileForm.setEventListeners()
     profileForm.open();
 })
 
@@ -38,8 +37,7 @@ addButton.addEventListener('click', () => {
     popupPhotoValidation.clearValidationErrors()
     popupPhotoValidation.disableSubmitButton()
 
-    newCard.setEventListeners()
-    newCard.open();
+    popupAddCard.open();
 })
 
 const popupOverlay = new PopupWithImage(popupOverlayWindow)
@@ -47,7 +45,6 @@ const popupOverlay = new PopupWithImage(popupOverlayWindow)
 const createCard = (item) => {
     const card = new Card(item, templateCard, () => {
         popupOverlay.open(item.name, item.link)
-        popupOverlay.setEventListeners()
     })
     const cardElement = card.generateCard()
     return cardElement
@@ -61,10 +58,14 @@ const cardSections = new Section({
 }, cardBox)
 cardSections.renderItems()
 
-const newCard = new PopupWithForm(popupPhoto, (item) => {
+const popupAddCard = new PopupWithForm(popupPhoto, (item) => {
     cardSections.addItem(createCard(item))
-    newCard.close()
+    popupAddCard.close()
 })
+
+profileForm.setEventListeners()
+popupOverlay.setEventListeners()
+popupAddCard.setEventListeners()
 
 const validationConfig = {
     inputSelector: '.popup__item',
