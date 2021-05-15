@@ -2,8 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="07f4e8df-12c3-47c1-ad7e-bba23e36c87d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/blocks/element/__like-counter/element__like-counter.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/element/__like/element__like.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Api.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/PopupWithSubmit.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/avatar_pancel.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/element/__group/_active/element__group_active.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/element/__like/_active/element__like_active.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/element/__group/element__group.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/element/__group/element__group.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/element/__trash/element__trash.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/element/__trash/element__trash.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/popup/__content/popup__content.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/popup/__content/popup__content.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/profile/__avatar/profile__avatar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/profile/__avatar/profile__avatar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Card.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Card.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FormValidation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FormValidation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Popup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Popup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PopupWithForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PopupWithForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PopupWithImage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PopupWithImage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Section.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Section.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UserInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/constants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/initial-cards.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +107,9 @@
       <workItem from="1618663456651" duration="63221000" />
       <workItem from="1619386627265" duration="9622000" />
       <workItem from="1619517531077" duration="10988000" />
-      <workItem from="1619684459721" duration="610000" />
+      <workItem from="1619684459721" duration="879000" />
+      <workItem from="1619801238567" duration="435000" />
+      <workItem from="1619965465670" duration="73523000" />
     </task>
     <servers />
   </component>
@@ -116,10 +139,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1613140300646" />
-    <state x="418" y="82" width="604" height="735" key="find.popup" timestamp="1612016062240">
+    <state x="418" y="82" width="604" height="735" key="find.popup" timestamp="1620570352943">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="418" y="82" width="604" height="735" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1612016062240" />
+    <state x="418" y="82" width="604" height="735" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1620570352943" />
     <state width="600" height="428" key="javadoc.popup" timestamp="1618672810895">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -128,10 +151,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="385" y="210" key="run.anything.popup/0.0.1440.900@0.0.1440.900" timestamp="1617630552676" />
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1618675880642">
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1621113106195">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1618675880642" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1621113106195" />
     <state x="385" y="200" width="670" height="611" key="search.everywhere.popup/0.23.1440.813@0.23.1440.813" timestamp="1618480752927" />
   </component>
 </project>

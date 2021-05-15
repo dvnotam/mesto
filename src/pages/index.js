@@ -1,73 +1,201 @@
-import './index.css';
+import './index.css'
 
-import {initialCards} from "../utils/initial-cards.js"
-import FormValidator from "../components/FormValidation.js"
+import FormValidation from "../components/FormValidation.js"
+import Api from "../components/Api.js"
 import Card from "../components/Card.js"
 import Section from '../components/Section.js'
-import UserInfo from "../components/UserInfo.js";
-import PopupWithForm from "../components/PopupWithForm.js";
-import PopupWithImage from "../components/PopupWithImage.js";
-import { templateCard, popupProfile, popupPhoto, popupOverlayWindow, cardBox, editButton, addButton, formElementTitle, formElementSubtitle, nameInput, jobInput, photoNameInput, photoInput } from '../utils/constants.js'
+import UserInfo from "../components/UserInfo.js"
+import PopupWithForm from "../components/PopupWithForm.js"
+import PopupWithImage from "../components/PopupWithImage.js"
+import PopupWithSubmit from "../components/PopupWithSubmit.js"
+
+import { cardListSection, popupProfile, popupProfileName, popupProfileAbout, popupProfileButton, popupProfileForm, profileName, profileAbout, profileAvatar, profileAvatarImg, popupNewCardButton, popupNewCard, photoPopupForm, popupAvatarProfile, popupAvatarForm, popupImage, popupDelete, template } from '../utils/constants.js'
+
+let currentUserId = null
+
+
+const api = new Api({
+    baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-23',
+    headers: {
+        authorization: '003a5599-a194-411d-bc3c-1ecd4eb68232',
+        "content-type": "application/json"
+    }
+})
 
 const userInfo = new UserInfo({
-    userName: formElementTitle,
-    userJob: formElementSubtitle
+    userInfoName: profileName,
+    userInfoAbout: profileAbout,
+    userAvatar: profileAvatarImg
 })
 
-const profileForm = new PopupWithForm(popupProfile, (item) => {
-    userInfo.setUserInfo(item)
-    profileForm.close()
+const cardList = new Section({
+    renderer: (item) => {
+        cardList.appendItem(createNewCard(item, currentUserId))
+    }
+}, cardListSection)
+
+const popupAddCard = new PopupWithForm({
+    popupSelector: popupNewCard,
+    handleFormSubmit: (item) => {
+        popupAddCard.renderLoading(true)
+        api.newCard(item)
+            .then((item) => {
+                cardList.prependItem(createNewCard(item, currentUserId))
+                popupAddCard.close()
+            })
+            .catch((err) => {
+                console.log(`Ошибка! ${err}`)
+            })
+            .finally(() => {
+                popupAddCard.renderLoading(false)
+            })
+    }
 })
 
-editButton.addEventListener('click', () => {
-    const { name, job } = userInfo.getUserInfo()
+popupAddCard.setEventListeners()
 
-    nameInput.value = name;
-    jobInput.value = job;
-
-    popupProfileValidation.clearValidationErrors()
-
-    profileForm.open();
+popupNewCardButton.addEventListener('click', () => {
+    photoPopupFormValidation.resetValidator()
+    popupAddCard.open()
 })
 
-addButton.addEventListener('click', () => {
-    photoNameInput.value = '';
-    photoInput.value = '';
+const popupEditProfile = new PopupWithForm({
+    popupSelector: popupProfile,
+    handleFormSubmit: (data) => {
+        popupEditProfile.renderLoading(true)
+        api.setUserInfo({
+            name: data.name,
+            about: data.about
+        })
+            .then((data) => {
+                userInfo.setUserInfo({
+                    name: data.name,
+                    about: data.about
+                })
 
-    popupPhotoValidation.clearValidationErrors()
-    popupPhotoValidation.disableSubmitButton()
-
-    popupAddCard.open();
+                popupEditProfile.close()
+            })
+            .catch((err) => {
+                console.log(`Ошибка! ${err}`)
+            })
+            .finally(() => {
+                popupEditProfile.renderLoading(false)
+            })
+    }
 })
 
-const popupOverlay = new PopupWithImage(popupOverlayWindow)
+popupEditProfile.setEventListeners()
 
-const createCard = (item) => {
-    const card = new Card(item, templateCard, () => {
-        popupOverlay.open(item.name, item.link)
-    })
+popupProfileButton.addEventListener('click', () => {
+    const userData = userInfo.getUserInfo()
+
+    popupProfileName.value = userData.name
+    popupProfileAbout.value = userData.about
+
+    editPopupFormValidation.resetValidator()
+    popupEditProfile.open()
+})
+
+const popupImageOpen = new PopupWithImage(popupImage)
+
+popupImageOpen.setEventListeners()
+
+
+const popupAvatar = new PopupWithForm({
+    popupSelector: popupAvatarProfile,
+    handleFormSubmit: (data) => {
+        popupAvatar.renderLoading(true)
+        api.newAvatar(data)
+            .then((data) => {
+                userInfo.setUserInfo({
+                    avatar: data.avatar
+                })
+
+                popupAvatar.close()
+            })
+            .catch((err) => {
+                console.log(`Ошибка! ${err}`)
+            })
+            .finally(() => {
+                popupAvatar.renderLoading(false)
+            })
+    }
+})
+
+popupAvatar.setEventListeners()
+
+profileAvatar.addEventListener('click', () => {
+    popupAvatar.open()
+    popupAvatarForm.reset()
+    avatarPopupFormValidation.resetValidator()
+})
+
+const deletePopup = new PopupWithSubmit(popupDelete)
+
+deletePopup.setEventListeners()
+
+function createNewCard (item, currentUserId) {
+    const card = new Card({
+        data: item,
+        cardSelector: template,
+        handleCardClick: () => {
+            popupImageOpen.open(item.name, item.link)
+        },
+        handleDeleteCard: () => {
+            deletePopup.setSubmitAction(() => {
+                api.deleteCard(item._id)
+                    .then(() => {
+                        card.deleteCard()
+                        deletePopup.close()
+                    })
+            })
+            deletePopup.open()
+        },
+        handleLikeIcon: () => {
+            if(card.isLiked()) {
+                api.deleteLike(item._id)
+                    .then((data) => {
+                        card.displayCounterLikes(data)
+                    })
+                    .catch((err) => {
+                        console.log(`Ошибка! ${err}`)
+                    })
+            } else {
+                api.getLike(item._id)
+                    .then((data) => {
+                        card.displayCounterLikes(data)
+                    })
+                    .catch((err) => {
+                        console.log(`Ошибка! ${err}`)
+                    })
+            }
+        }
+    }, currentUserId)
+
     const cardElement = card.generateCard()
+    photoPopupForm.reset()
+    card.displayCounterLikes(item)
+
     return cardElement
 }
 
-const cardSections = new Section({
-    item: initialCards,
-    renderer: (item) => {
-        cardSections.addItem(createCard(item))
-    }
-}, cardBox)
-cardSections.renderItems()
+Promise.all([api.getUserInfo(), api.getCards()])
+    .then(([userData, cardData]) => {
+        userInfo.setUserInfo({
+            name: userData.name,
+            about: userData.about,
+            avatar: userData.avatar
+        })
 
-const popupAddCard = new PopupWithForm(popupPhoto, (item) => {
-    cardSections.addItem(createCard(item))
-    popupAddCard.close()
-})
+        currentUserId = userData._id
 
-profileForm.setEventListeners()
-popupOverlay.setEventListeners()
-popupAddCard.setEventListeners()
+        cardList.renderItems(cardData)
+    })
+    .catch((err) => {
+        console.log(`Ошибка! ${err}`)
+    })
 
-const validationConfig = {
+const selectorValidation = {
     inputSelector: '.popup__item',
     submitButtonSelector: '.popup__button',
     inactiveButtonClass: 'popup__button_disabled',
@@ -75,10 +203,23 @@ const validationConfig = {
     errorClass: 'popup__error_visible'
 }
 
-const popupFormProfile = document.querySelector('.popup__form_profile')
-const popupProfileValidation = new FormValidator(validationConfig, popupFormProfile)
-popupProfileValidation.enableValidation()
+const editPopupFormValidation = new FormValidation({
+    validationConfig: selectorValidation,
+    formElement: popupProfileForm
+})
 
-const popupFormPhoto = document.querySelector('.popup__form_photo')
-const popupPhotoValidation = new FormValidator(validationConfig, popupFormPhoto)
-popupPhotoValidation.enableValidation()
+editPopupFormValidation.enableValidation()
+
+const photoPopupFormValidation = new FormValidation({
+    validationConfig: selectorValidation,
+    formElement: photoPopupForm
+})
+
+photoPopupFormValidation.enableValidation()
+
+const avatarPopupFormValidation = new FormValidation({
+    validationConfig: selectorValidation,
+    formElement: popupAvatarForm
+})
+
+avatarPopupFormValidation.enableValidation()

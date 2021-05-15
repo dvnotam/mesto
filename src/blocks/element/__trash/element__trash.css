@@ -10,6 +10,10 @@
     z-index: 1;
 }
 
+.element__trash.hide {
+    display: none;
+}
+
 .element__trash:hover {
     opacity: 0.6;
 }

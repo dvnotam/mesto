@@ -13,10 +13,13 @@
     <main>
         <section class = "profile">
             <div class = "profile__content">
-                <img src="<%=require('./images/cousteau.jpg')%>" alt="Кусто" class ="profile__avatar">
+                <div class="profile__avatar">
+                    <img src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg" alt="Кусто" class ="profile__avatar-image">
+                    <div class="profile__avatar-edit"></div>
+                </div>
                 <div class = "profile__info">
-                    <h2 class = "profile__title">Жак-Ив Кусто</h2>
-                    <p class = "profile__subtitle">Исследователь океана</p>
+                    <h2 class = "profile__title"></h2>
+                    <p class = "profile__subtitle"></p>
                 </div>
                 <button class = "profile__edit-button"></button>
             </div>
@@ -37,7 +40,7 @@
             <form name = "card" class = "popup__form popup__form_profile" novalidate>
                 <input id = "name" type="text" name = "name" class = "popup__item popup__item_profile-name" placeholder = "Имя" required minlength="2" maxlength="40">
                 <span id ="name-error" class = "popup__error"></span>
-                <input id = "job" type="text" name = "job" class = "popup__item popup__item_profile-job" placeholder = "Вид деятельности" required minlength="2" maxlength="200">
+                <input id = "job" type="text" name = "about" class = "popup__item popup__item_profile-about" placeholder = "Вид деятельности" required minlength="2" maxlength="200">
                 <span id = "job-error" class = "popup__error"></span>
                 <input type = "submit" class = "popup__button popup__button_profile" value="Сохранить">
             </form>
@@ -58,6 +61,28 @@
         </div>
     </div>
 
+    <div class = "popup popup_avatar-profile">
+        <div class = "popup__content">
+            <button class = "popup__close-button popup__close-button_avatar"></button>
+            <h2 class = "popup__title">Обновить аватар</h2>
+            <form class = "popup__form popup__form_avatar">
+                <input id = "avatar-photo" type = "url" name = "avatar" class = "popup__item popup__item_avatar" placeholder = "Ссылка на картинку" required>
+                <span id = "avatar-photo-error" type = "avatar-error" class = "popup__error"></span>
+                <input type = "submit" class = "popup__button popup__button_avatar popup__button_disabled" disabled = "true" value="Сохранить">
+            </form>
+        </div>
+    </div>
+
+    <div class = "popup popup_delete">
+        <div class = "popup__content">
+            <button class = "popup__close-button popup__close-button_delete"></button>
+            <h2 class = "popup__title">Вы уверенны?</h2>
+            <form class = "popup__form popup__form_delete">
+                <input type = "submit" class = "popup__button popup__button_delete" value="Сохранить">
+            </form>
+        </div>
+    </div>
+
     <div class = "popup popup_overlay-window">
         <div class = "group">
             <div class = "group__box">
@@ -70,11 +95,14 @@
 
     <template class = "template template_card">
         <div class="element">
-            <button class = "element__trash"></button>
+            <button class ="element__trash"></button>
             <img class="element__photo" alt = "" src ="#">
             <div class="element__content">
                 <h2 class="element__title"></h2>
-                <button class = "element__group"></button>
+                <div class = "element__group">
+                    <button class = "element__like"></button>
+                    <h3 class = "element__like-counter"></h3>
+                </div>
             </div>
         </div>
     </template>
