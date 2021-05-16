@@ -24,9 +24,9 @@ export default class PopupWithForm extends Popup {
     renderLoading(data) {
         const submitButton = this._popupElement.querySelector('.popup__button')
         if (data) {
-            submitButton.textContent = 'Сохранение...'
+            submitButton.value = 'Сохранение...'
         } else {
-            submitButton.textContent = 'Сохранить'
+            submitButton.value = 'Сохранить'
         }
     }
 

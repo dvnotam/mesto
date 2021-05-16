@@ -68,11 +68,10 @@ const popupEditProfile = new PopupWithForm({
             about: data.about
         })
             .then((data) => {
-                userInfo.setUserInfo({
-                    name: data.name,
-                    about: data.about
-                })
-
+                let setProfile = userInfo.getUserInfo();
+                setProfile.name = data.name;
+                setProfile.about = data.about
+                userInfo.setUserInfo(setProfile);
                 popupEditProfile.close()
             })
             .catch((err) => {
@@ -107,10 +106,9 @@ const popupAvatar = new PopupWithForm({
         popupAvatar.renderLoading(true)
         api.newAvatar(data)
             .then((data) => {
-                userInfo.setUserInfo({
-                    avatar: data.avatar
-                })
-
+                let setAvatar = userInfo.getUserInfo()
+                setAvatar.avatar = data.avatar
+                userInfo.setUserInfo(setAvatar)
                 popupAvatar.close()
             })
             .catch((err) => {
@@ -186,9 +184,7 @@ Promise.all([api.getUserInfo(), api.getCards()])
             about: userData.about,
             avatar: userData.avatar
         })
-
         currentUserId = userData._id
-
         cardList.renderItems(cardData)
     })
     .catch((err) => {

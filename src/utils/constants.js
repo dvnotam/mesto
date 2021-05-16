@@ -4,7 +4,6 @@ export const template = '.template_card'
 export const popupProfile = '.popup_profile-form'
 
 export const popupAvatarProfile = '.popup_avatar-profile'
-export const profileAvatar = document.querySelector('.profile__avatar')
 export const profileAvatarImg = document.querySelector('.profile__avatar-image')
 
 export const popupProfileForm = document.querySelector('.popup__form_profile')
@@ -14,6 +13,7 @@ export const popupProfileButton = document.querySelector('.profile__edit-button'
 
 export const profileName = document.querySelector('.profile__title')
 export const profileAbout = document.querySelector('.profile__subtitle')
+export const profileAvatar = document.querySelector('.profile__avatar')
 
 export const photoPopupForm = document.querySelector('.popup__form_photo')
 export const popupAvatarForm = document.querySelector('.popup__form_avatar')
