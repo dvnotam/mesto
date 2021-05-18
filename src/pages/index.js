@@ -11,7 +11,7 @@ import PopupWithSubmit from "../components/PopupWithSubmit.js"
 
 import { selectorValidation, cardListSection, popupProfile, popupProfileName, popupProfileAbout, popupProfileButton, popupProfileForm, profileName, profileAbout, profileAvatar, profileAvatarImg, popupNewCardButton, popupNewCard, photoPopupForm, popupAvatarProfile, popupAvatarForm, popupImage, popupDelete, template } from '../utils/constants.js'
 
-//Простите, что не исправил пожелания. Я обязательно все поправлю в свободное время
+//Простите, что не прошла прошлая итерация, работа не запушилась на гитхаб и вот только ночью наставник помог мне решить эту проблему. Надеюсь, я исправил все критические замечания. Рекомендуемые доработки я сделаю в ближайшее время.
 
 let currentUserId = null
 
