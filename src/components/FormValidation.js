@@ -20,7 +20,7 @@ export default class FormValidation {
     }
 
     _setInputListeners() {
-        this._inputList.forEach (inputElement => {
+        this._inputList.forEach(inputElement => {
             inputElement.addEventListener ('input', () => {
                 this._checkInput(inputElement)
                 this._toggleButtonState(this._inputList, this._submitButton)
