@@ -9,10 +9,11 @@ import PopupWithForm from "../components/PopupWithForm.js"
 import PopupWithImage from "../components/PopupWithImage.js"
 import PopupWithSubmit from "../components/PopupWithSubmit.js"
 
-import { cardListSection, popupProfile, popupProfileName, popupProfileAbout, popupProfileButton, popupProfileForm, profileName, profileAbout, profileAvatar, profileAvatarImg, popupNewCardButton, popupNewCard, photoPopupForm, popupAvatarProfile, popupAvatarForm, popupImage, popupDelete, template } from '../utils/constants.js'
+import { selectorValidation, cardListSection, popupProfile, popupProfileName, popupProfileAbout, popupProfileButton, popupProfileForm, profileName, profileAbout, profileAvatar, profileAvatarImg, popupNewCardButton, popupNewCard, photoPopupForm, popupAvatarProfile, popupAvatarForm, popupImage, popupDelete, template } from '../utils/constants.js'
+
+//Простите, что не исправил пожелания. Я обязательно все поправлю в свободное время
 
 let currentUserId = null
-
 
 const api = new Api({
     baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-23',
@@ -68,7 +69,7 @@ const popupEditProfile = new PopupWithForm({
             about: data.about
         })
             .then((data) => {
-                let setProfile = userInfo.getUserInfo();
+                const setProfile = userInfo.getUserInfo();
                 setProfile.name = data.name;
                 setProfile.about = data.about
                 userInfo.setUserInfo(setProfile);
@@ -106,9 +107,7 @@ const popupAvatar = new PopupWithForm({
         popupAvatar.renderLoading(true)
         api.newAvatar(data)
             .then((data) => {
-                let setAvatar = userInfo.getUserInfo()
-                setAvatar.avatar = data.avatar
-                userInfo.setUserInfo(setAvatar)
+                userInfo.setUserInfo(data)
                 popupAvatar.close()
             })
             .catch((err) => {
@@ -124,7 +123,6 @@ popupAvatar.setEventListeners()
 
 profileAvatar.addEventListener('click', () => {
     popupAvatar.open()
-    popupAvatarForm.reset()
     avatarPopupFormValidation.resetValidator()
 })
 
@@ -145,6 +143,9 @@ function createNewCard (item, currentUserId) {
                     .then(() => {
                         card.deleteCard()
                         deletePopup.close()
+                    })
+                    .catch((err) => {
+                        console.log(`Ошибка! ${err}`)
                     })
             })
             deletePopup.open()
@@ -171,7 +172,6 @@ function createNewCard (item, currentUserId) {
     }, currentUserId)
 
     const cardElement = card.generateCard()
-    photoPopupForm.reset()
     card.displayCounterLikes(item)
 
     return cardElement
@@ -190,14 +190,6 @@ Promise.all([api.getUserInfo(), api.getCards()])
     .catch((err) => {
         console.log(`Ошибка! ${err}`)
     })
-
-const selectorValidation = {
-    inputSelector: '.popup__item',
-    submitButtonSelector: '.popup__button',
-    inactiveButtonClass: 'popup__button_disabled',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__error_visible'
-}
 
 const editPopupFormValidation = new FormValidation({
     validationConfig: selectorValidation,

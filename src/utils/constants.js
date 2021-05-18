@@ -23,3 +23,11 @@ export const popupNewCardButton = document.querySelector('.profile__add-button')
 
 export const popupImage = '.popup_overlay-window'
 export const popupDelete = '.popup_delete'
+
+export const selectorValidation = {
+    inputSelector: '.popup__item',
+    submitButtonSelector: '.popup__button',
+    inactiveButtonClass: 'popup__button_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__error_visible'
+}
