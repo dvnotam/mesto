@@ -23,9 +23,9 @@ export default class FormValidation {
         this._inputList.forEach(inputElement => {
             inputElement.addEventListener ('input', () => {
                 this._checkInput(inputElement)
-                this._toggleButtonState(this._inputList, this._submitButton)
+                this._toggleButtonState()
             })
-            this._toggleButtonState(this._inputList, this._submitButton)
+            this._toggleButtonState()
         })
     }
 
@@ -78,6 +78,6 @@ export default class FormValidation {
             this._hideInputError(input)
         })
 
-        this._toggleButtonState(this._inputList, this._submitButton)
+        this._toggleButtonState()
     }
 }
